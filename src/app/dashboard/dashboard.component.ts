@@ -10,7 +10,9 @@ export class DashboardComponent implements OnInit {
 
     constructor() {}
 
-
+    addOptionClick() {
+        alert('clicked');
+    }
 
     public brandPrimary: string = '#20a8d8';
     public brandSuccess: string = '#4dbd74';
