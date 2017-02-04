@@ -1,17 +1,49 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { DataAccessService } from '../services/data.access.service';
+import { MatchCard } from '../models/match-card';
+import { MatchCardOption } from '../models/match-card-option';
+
 @Component({
     templateUrl: 'dashboard.component.html'
 })
 export class DashboardComponent implements OnInit {
 
     categories: Array<string> = ['sports'];
+    options: Array<MatchCardOption> = [];
+    question: string = '';
+    betClose: string = '';
+    selectedCategory: string = '';
 
-    constructor() {}
+    constructor(private dataAccess: DataAccessService) { }
 
     addOptionClick() {
-        alert('clicked');
+        let matchCardOption = new MatchCardOption();
+        matchCardOption.name = '';
+        matchCardOption.result = '';
+
+        this.options.push(matchCardOption);
+    }
+
+    submitCard() {
+        let matchCard = new MatchCard();
+        matchCard.question = this.question;
+        matchCard.options = this.options;
+        matchCard.category = this.selectedCategory;
+        matchCard.betCloseDate = this.betClose;
+
+        // TODO - catch and handle exception
+        this.dataAccess.addNewMatchCard(matchCard);
+
+        this.clearEntries();
+    }
+
+    private clearEntries(): void {
+        this.options = [];
+        this.question = '';
+        this.betClose = '';
+        this.selectedCategory = '';
     }
 
     public brandPrimary: string = '#20a8d8';

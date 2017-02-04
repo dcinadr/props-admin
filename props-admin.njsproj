@@ -21,6 +21,7 @@
   <ItemGroup>
     <Content Include="angular-cli.json" />
     <Content Include="package.json" />
+    <Content Include="src\app\dashboard\dashboard.component.scss" />
     <Content Include="src\assets\css\style.min.css" />
     <Content Include="src\assets\fonts\fontawesome-webfont.eot" />
     <Content Include="src\assets\fonts\fontawesome-webfont.svg" />
@@ -217,6 +218,12 @@
     <Content Include="src\index.html" />
     <Content Include="src\favicon.ico" />
     <Content Include="src\tsconfig.json" />
+    <TypeScriptCompile Include="src\app\api\api.firebase.module.ts" />
+    <TypeScriptCompile Include="src\app\api\api.firebase.match-card.ts" />
+    <TypeScriptCompile Include="src\app\models\match-card-option.ts" />
+    <TypeScriptCompile Include="src\app\models\match-card.ts" />
+    <TypeScriptCompile Include="src\app\services\data.access.module.ts" />
+    <TypeScriptCompile Include="src\app\services\data.access.service.ts" />
     <TypeScriptCompile Include="src\main.ts" />
     <TypeScriptCompile Include="src\polyfills.ts" />
     <TypeScriptCompile Include="src\test.ts" />
@@ -530,6 +537,9 @@
     <Folder Include="src\app" />
     <Folder Include="src\app\dashboard" />
     <Folder Include="src\app\layouts" />
+    <Folder Include="src\app\api\" />
+    <Folder Include="src\app\models\" />
+    <Folder Include="src\app\services\" />
     <Folder Include="src\app\shared" />
     <Folder Include="src\assets" />
     <Folder Include="src\assets\css" />

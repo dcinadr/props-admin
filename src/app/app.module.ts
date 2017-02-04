@@ -12,11 +12,23 @@ import { SIDEBAR_TOGGLE_DIRECTIVES } from './shared/sidebar.directive';
 import { AsideToggleDirective } from './shared/aside.directive';
 import { BreadcrumbsComponent } from './shared/breadcrumb.component';
 
+import { AngularFireModule } from 'angularfire2';
+
 // Routing Module
 import { AppRoutingModule } from './app.routing';
 
 //Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
+
+import { DataAccessModule } from './services/data.access.module';
+
+export const firebaseConfig = {
+    apiKey: "AIzaSyCs25dhBpwgCyow88UI8ZrhJLtsQjtbtBg",
+    authDomain: "props-155904.firebaseapp.com",
+    databaseURL: "https://props-155904.firebaseio.com",
+    storageBucket: "props-155904.appspot.com",
+    messagingSenderId: "655279945221"
+};
 
 @NgModule({
     imports: [
@@ -24,7 +36,9 @@ import { FullLayoutComponent } from './layouts/full-layout.component';
         AppRoutingModule,
         DropdownModule.forRoot(),
         TabsModule.forRoot(),
-        ChartsModule
+        ChartsModule,
+        AngularFireModule.initializeApp(firebaseConfig),
+        DataAccessModule // <-- probably going to want to replace this with the dbaccess service layer (module)
     ],
     declarations: [
         AppComponent,
