@@ -9,9 +9,10 @@ export class DataAccessService {
 
     constructor(private matchCardApi: MatchCardFirebaseApi) { }
 
-    //getAllMatchCards(): Observable<any> {
-    //    return this.matchCardApi.get(); // <-- does there need to be more to this?
-    //}
+    // todo - think about changing it from Observable<any> to Observable<MatchCard>
+    getAllMatchCards(): Observable<any> {
+        return this.matchCardApi.get(); // <-- does there need to be more to this?
+    }
 
     addNewMatchCard(matchCard: MatchCard): void {
         // TODO - catch and handle exception

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+
+import 'rxjs/add/operator/do';
 
 import { DataAccessService } from '../services/data.access.service';
 import { MatchCard } from '../models/match-card';
@@ -15,8 +18,15 @@ export class DashboardComponent implements OnInit {
     question: string = '';
     betClose: string = '';
     selectedCategory: string = '';
+    currentCards: Observable<any>;
 
     constructor(private dataAccess: DataAccessService) { }
+
+    ngOnInit(): void {
+        // todo - maybe want to institute debugging framework --> http://blog.angular-university.io/debug-rxjs/
+        this.currentCards = this.dataAccess.getAllMatchCards()
+            .do(res => console.log('current cards: ', res));
+    }
 
     addOptionClick() {
         let matchCardOption = new MatchCardOption();
@@ -496,14 +506,4 @@ export class DashboardComponent implements OnInit {
 
     public sparklineChartLegend: boolean = false;
     public sparklineChartType: string = 'line';
-
-
-    ngOnInit(): void {
-        //generate random values for mainChart
-        for (var i = 0; i <= this.mainChartElements; i++) {
-            this.mainChartData1.push(this.random(50, 200));
-            this.mainChartData2.push(this.random(80, 100));
-            this.mainChartData3.push(65);
-        }
-    }
 }

@@ -3,8 +3,6 @@ import { Headers, Http } from '@angular/http';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Observable } from 'rxjs/Observable';
 
-import 'rxjs/add/operator/toPromise';
-
 import { MatchCard } from '../models/match-card';
 
 @Injectable()
@@ -12,9 +10,9 @@ export class MatchCardFirebaseApi {
 
     constructor(private af: AngularFire) { }
 
-    //get(): Observable<any> {
-    //    // todo - implement
-    //}
+    get(): Observable<any> {
+        return this.af.database.list('/matchCards');
+    }
 
     post(matchCard: MatchCard): void {
         // TODO - catch and handle exception

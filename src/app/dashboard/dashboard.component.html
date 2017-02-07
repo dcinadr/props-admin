@@ -3,7 +3,7 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <strong>Card Data</strong>
+                    <strong>Enter Card Data</strong>
                 </div>
                 <div class="card-block">
                     <form action="" method="post" class="form-horizontal">
@@ -56,6 +56,33 @@
                             </div>
                         </div>
                     </form>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <strong>View Card Data</strong>
+                </div>
+                <div class="card-block">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Question</th>
+                                <th>Category</th>
+                                <th>Bet Closing Date</th>
+                                <th>Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let currentCard of currentCards | async">
+                                <td>{{currentCard.question}}</td>
+                                <td>{{currentCard.category}}</td>
+                                <td>{{currentCard.betCloseDate}}</td>
+                                <td>
+                                    <span *ngFor="let option of currentCard.options">{{option.name}};  </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
