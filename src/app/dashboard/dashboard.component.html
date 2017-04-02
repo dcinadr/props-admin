@@ -70,6 +70,7 @@
                                 <th>Category</th>
                                 <th>Bet Closing Date</th>
                                 <th>Options</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -78,7 +79,10 @@
                                 <td>{{currentCard.category}}</td>
                                 <td>{{currentCard.betCloseDate}}</td>
                                 <td>
-                                    <span *ngFor="let option of currentCard.options">{{option.name}};  </span>
+                                    <span *ngFor="let option of currentCard.options; let i = index">{{i}}) {{option.name}};  </span>
+                                </td>
+                                <td>
+                                    <i class="glyphicons glyphicons-pencil" style="cursor: pointer" (click)="alert('hi')"></i>
                                 </td>
                             </tr>
                         </tbody>
