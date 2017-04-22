@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { ModalDirective } from 'ng2-bootstrap/modal/modal.component';
 
 import 'rxjs/add/operator/do';
 
@@ -13,12 +14,19 @@ import { MatchCardOption } from '../models/match-card-option';
 })
 export class DashboardComponent implements OnInit {
 
+    @ViewChild('editModal') public editModal: ModalDirective;
+
     categories: Array<string> = ['sports'];
     options: Array<MatchCardOption> = [];
     question: string = '';
     betClose: string = '';
     selectedCategory: string = '';
     currentCards: Observable<any>;
+
+    editQuestion: string = '';
+    editSelectedCategory: string = '';
+    editBetClose: string = '';
+    editOptions: Array<MatchCardOption> = [];
 
     constructor(private dataAccess: DataAccessService) { }
 
@@ -47,6 +55,22 @@ export class DashboardComponent implements OnInit {
         this.dataAccess.addNewMatchCard(matchCard);
 
         this.clearEntries();
+    }
+
+    pencilClick(currentCard) {
+        this.editQuestion = currentCard.question;
+        this.editSelectedCategory = currentCard.category;
+        this.editBetClose = currentCard.betCloseDate;
+        this.editOptions = currentCard.options;
+        this.editModal.show();
+    }
+
+    hideEditModal() {
+        this.editModal.hide();
+    }
+
+    editCard() {
+        alert('not implemented yet');
     }
 
     private clearEntries(): void {

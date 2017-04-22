@@ -38,7 +38,7 @@
                         <div class="form-group row cards-options-input">
                             <div class="col-md-12">
                                 <div class="row option-row" *ngFor="let option of options; let i = index;">
-                                    <span class="col-md-2 form-control-label">Option {{i}}</span>
+                                    <span class="col-md-2 form-control-label">Option {{i+1}}</span>
                                     <div class="col-md-7 option-name">
                                         <input type="text" id="option-name-{{i}}-input" name="option-name-{{i}}-input" class="form-control" placeholder="Name" [(ngModel)]="option.name"/>
                                     </div>
@@ -81,12 +81,65 @@
                                 <td>
                                     <span *ngFor="let option of currentCard.options; let i = index">{{i}}) {{option.name}};  </span>
                                 </td>
-                                <td>
-                                    <i class="glyphicons glyphicons-pencil" style="cursor: pointer" (click)="alert('hi')"></i>
+                                <td class="card-item-actions">
+                                    <a (click)="pencilClick(currentCard)">
+                                        <i class="glyphicons glyphicons-pencil" ></i>
+                                    </a>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div bsModal #editModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="editModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">Edit Card</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="hideEditModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <label class="col-md-2 form-control-label" for="question-input">Question</label>
+                    <div class="col-md-10">
+                        <input type="text" id="question-input" name="question-input" class="form-control" [(ngModel)]="editQuestion" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2 form-control-label" for="category-select">Category</label>
+                    <div class="col-md-10">
+                        <select id="category-select" name="category-select" class="form-control" [(ngModel)]="editSelectedCategory">
+                            <option *ngFor="let category of categories" value="{{category}}">
+                                {{category}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2 form-control-label" for="bet-close-input">Bet Closing Date</label>
+                    <div class="col-md-10">
+                        <input type="text" id="bet-close-input" name="bet-close-input" class="form-control" [(ngModel)]="editBetClose" />
+                    </div>
+                </div>
+                <div class="form-group row cards-options-input">
+                    <div class="col-md-12">
+                        <div class="row option-row" *ngFor="let option of editOptions; let i = index;">
+                            <span class="col-md-2 form-control-label">Option {{i+1}}</span>
+                            <div class="col-md-7 option-name">
+                                <input type="text" id="option-name-{{i}}-input" name="option-name-{{i}}-input" class="form-control" placeholder="Name" [(ngModel)]="option.name" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button type="button" class="btn btn-primary" (click)="editCard()">Submit</button>
+                    </div>
                 </div>
             </div>
         </div>

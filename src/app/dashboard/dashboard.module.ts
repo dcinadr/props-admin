@@ -6,12 +6,16 @@ import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 
+// ngx-bootstrap
+import { ModalModule } from 'ng2-bootstrap/modal';
+
 @NgModule({
     imports: [
         DashboardRoutingModule,
         ChartsModule,
+        ModalModule.forRoot(),
         CommonModule,
-        FormsModule
+        FormsModule        
     ],
     declarations: [DashboardComponent]
 })

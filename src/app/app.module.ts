@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { AppComponent } from './app.component';
-import { DropdownModule } from 'ng2-bootstrap/dropdown';
+import { BsDropdownModule } from 'ng2-bootstrap/dropdown';
 import { TabsModule } from 'ng2-bootstrap/tabs';
 import { NAV_DROPDOWN_DIRECTIVES } from './shared/nav-dropdown.directive';
 
@@ -33,8 +34,9 @@ export const firebaseConfig = {
 @NgModule({
     imports: [
         BrowserModule,
+	BrowserAnimationsModule,
         AppRoutingModule,
-        DropdownModule.forRoot(),
+        BsDropdownModule.forRoot(),
         TabsModule.forRoot(),
         ChartsModule,
         AngularFireModule.initializeApp(firebaseConfig),

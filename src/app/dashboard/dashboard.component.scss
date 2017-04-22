@@ -1,4 +1,6 @@
-﻿.dashboard {
+﻿/// <reference path="../../scss/_bootstrap-variables.scss" />
+
+.dashboard {
     .cards-options-header {
         .button-add-options {
             margin-bottom: .3em;
@@ -10,4 +12,12 @@
         }
     }
     
+    .card-block {
+        .card-item-actions {
+            a {
+                cursor: pointer;
+                color: $brand-primary;
+            }
+        }
+    }
 }
