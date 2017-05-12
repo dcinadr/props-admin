@@ -18,4 +18,8 @@ export class DataAccessService {
         // TODO - catch and handle exception
         this.matchCardApi.post(matchCard);
     }
+
+    updateMatchCard(matchCard: MatchCard): void {
+        this.matchCardApi.update(matchCard);
+    }
 }

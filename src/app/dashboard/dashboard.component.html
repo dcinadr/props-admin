@@ -79,7 +79,7 @@
                                 <td>{{currentCard.category}}</td>
                                 <td>{{currentCard.betCloseDate}}</td>
                                 <td>
-                                    <span *ngFor="let option of currentCard.options; let i = index">{{i}}) {{option.name}};  </span>
+                                    <span *ngFor="let option of currentCard.options; let i = index">{{i+1}}) {{option.name}}  &nbsp;&nbsp;</span>
                                 </td>
                                 <td class="card-item-actions">
                                     <a (click)="pencilClick(currentCard)">

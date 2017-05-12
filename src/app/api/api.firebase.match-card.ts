@@ -19,6 +19,10 @@ export class MatchCardFirebaseApi {
         this.af.database.list('/matchCards').push(matchCard);
     }
 
+    update(matchCard: MatchCard): void {
+        this.af.database.object('/matchCards/' + matchCard.id).update(matchCard);
+    }
+
     // todo - below here should be removed when not needed as reference anymore
     //private matchCardUrl = 'api/matchCards';
     //private headers = new Headers({ 'Content-Type': 'application/json' });

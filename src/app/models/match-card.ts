@@ -9,4 +9,5 @@ export class MatchCard {
     options: Array<MatchCardOption>;
     betCloseDate: string;
     category: string;
+    id: string;
 }

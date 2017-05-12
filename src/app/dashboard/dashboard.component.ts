@@ -27,6 +27,7 @@ export class DashboardComponent implements OnInit {
     editSelectedCategory: string = '';
     editBetClose: string = '';
     editOptions: Array<MatchCardOption> = [];
+    editId: string = '';
 
     constructor(private dataAccess: DataAccessService) { }
 
@@ -62,6 +63,11 @@ export class DashboardComponent implements OnInit {
         this.editSelectedCategory = currentCard.category;
         this.editBetClose = currentCard.betCloseDate;
         this.editOptions = currentCard.options;
+        if (!currentCard.id) {
+            alert('This object in the database is not up-to-date.  Will not be able to update item.  Please fix object first.');
+            return;
+        }
+        this.editId = currentCard.id;
         this.editModal.show();
     }
 
@@ -70,7 +76,15 @@ export class DashboardComponent implements OnInit {
     }
 
     editCard() {
-        alert('not implemented yet');
+        let matchCard = new MatchCard();
+        matchCard.question = this.editQuestion;
+        matchCard.options = this.editOptions;
+        matchCard.category = this.editSelectedCategory;
+        matchCard.betCloseDate = this.editBetClose;
+        matchCard.id = this.editId;
+
+        this.dataAccess.updateMatchCard(matchCard);
+        this.editModal.hide();
     }
 
     private clearEntries(): void {
